@@ -1,0 +1,33 @@
+.loader {
+    border-style: solid;
+    border-width: 4px;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+/* CSS for the PreviewEvent animations */
+.container {
+    opacity: 0;
+    transform: translateY(20px); /* Start position for sliding effect */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .container.loaded {
+    opacity: 1;
+    transform: translateY(0); /* Final position for sliding in */
+  }
+  
+  .container.exiting {
+    opacity: 0;
+    transform: translateY(20px); /* Slide-out effect */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }  
