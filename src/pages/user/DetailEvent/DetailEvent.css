@@ -16,17 +16,17 @@
   
   .container {
     opacity: 0;
-    transform: translateY(20px); /* Start position, for sliding effect */
+    transform: translateY(20px);
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
   
   .container.loaded {
     opacity: 1;
-    transform: translateY(0); /* Final position */
+    transform: translateY(0);
   }
   
   .container.exiting {
     opacity: 0;
-    transform: translateY(20px); /* Slide out effect */
+    transform: translateY(20px);
     transition: opacity 0.5s ease, transform 0.5s ease;
   }

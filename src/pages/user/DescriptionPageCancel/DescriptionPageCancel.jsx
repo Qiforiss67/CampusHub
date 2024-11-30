@@ -11,7 +11,6 @@ const DescriptionPageCancel = () => {
 
   const navigate = useNavigate();
 
-  // Dummy event data
   const dummyEventData = {
     poster: Poster,
     title: "How To Maximize Our Foreign Language Skills",
@@ -30,17 +29,14 @@ const DescriptionPageCancel = () => {
   };
 
   useEffect(() => {
-    // Simulating API call
     setTimeout(() => {
       setIsCrossVisible(true);
     }, 1000);
 
-    // Use dummy data instead of fetching from an API
     setEventData(dummyEventData);
     setLoading(false);
   }, []);
 
-  // If still loading, show loading message
   if (loading) {
     return <div>Loading...</div>;
   }

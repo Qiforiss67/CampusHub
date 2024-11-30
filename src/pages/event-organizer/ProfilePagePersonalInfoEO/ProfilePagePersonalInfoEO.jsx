@@ -107,9 +107,7 @@ const ProfilePagePersonalInfoEO = () => {
       phone,
     };
 
-    // Simulate sending the data to the backend
     try {
-      // Example of a backend request (commented out for now)
       // const response = await fetch("https://example.com/api/user/profile/update", {
       //   method: "POST", 
       //   headers: {

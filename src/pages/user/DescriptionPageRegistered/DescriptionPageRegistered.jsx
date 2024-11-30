@@ -28,19 +28,17 @@ const DescriptionPageRegistered = () => {
 
   const [eventData, setEventData] = useState(dummyEventData);
   const [loading, setLoading] = useState(true);
-  const [code, setCode] = useState(["A", "B", "C", "D"]); // Dummy unique code
-  const [showPopUp, setShowPopUp] = useState(false); // State untuk menampilkan PopUpCancel
+  const [code, setCode] = useState(["A", "B", "C", "D"]);
+  const [showPopUp, setShowPopUp] = useState(false);
   
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Simulasikan pengambilan data event
     const storedCode = localStorage.getItem("uniqueCode");
     if (storedCode) {
       setCode(storedCode.split(""));
     }
 
-    // Simulasi pengambilan data event (komentar fetch API)
     // const fetchEventData = async () => {
     //   try {
     //     const response = await fetch("https://backend-api.com/event/1");
@@ -61,7 +59,6 @@ const DescriptionPageRegistered = () => {
 
     // fetchEventData();
 
-    // Set event data langsung dengan dummy data
     setEventData(dummyEventData);
     setLoading(false);
 
@@ -72,11 +69,11 @@ const DescriptionPageRegistered = () => {
   }
 
   const handleCancel = () => {
-    setShowPopUp(true); // Menampilkan PopUpCancel saat tombol Batalkan ditekan
+    setShowPopUp(true);
   };
 
   const handleBack = () => {
-    navigate("/my-events"); // Kembali ke halaman My Events
+    navigate("/my-events");
   };
 
   return (

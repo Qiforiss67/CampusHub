@@ -1,7 +1,6 @@
-/* Animation for sliding from bottom */
 @keyframes slide-up {
     0% {
-      transform: translateY(50px); /* Start from 50px below */
+      transform: translateY(50px);
       opacity: 0;
     }
     100% {
