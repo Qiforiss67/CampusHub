@@ -5,6 +5,7 @@ import Profile from "../../../assets/Profile.svg";
 import Ellipse from "../../../assets/Ellipse.svg";
 import PopUpUpdate from "../../../components/PopUpUpdate";
 import PopUpDelete from "../../../components/PopUpDelete";
+import PopUpLogout from "../../../components/PopUpLogout";
 import "../ProfilePagePassword/ProfilePagePassword.css"
 
 const ProfilePagePassword = () => {
@@ -18,6 +19,7 @@ const ProfilePagePassword = () => {
   const [profileImage, setProfileImage] = useState(null);
   const [showDeletePopUp, setShowDeletePopUp] = useState(false);
   const [showPopUp, setShowPopUp] = useState(false);
+  const [showLogoutPopUp, setShowLogoutPopUp] = useState(false);
   const [showAnimation, setShowAnimation] = useState(false);
 
 
@@ -287,6 +289,16 @@ const ProfilePagePassword = () => {
                   Hapus Akun
                 </button>
                 </li>
+                <li>
+                <button
+                  className={`font-regular text-lg ${activePage === "delete-account" ? "font-semibold underline" : ""} hover:underline`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setShowLogoutPopUp(true);
+                  }}>
+                  Log Out
+                </button>
+              </li>
               </ul>
             </div>
           </div>
@@ -296,6 +308,7 @@ const ProfilePagePassword = () => {
         <img src={Ellipse} alt="Background" className="w-[200px] sm:w-[250px] md:w-[300px]" />
       </div>
       {showDeletePopUp && <PopUpDelete setShowPopUp={setShowDeletePopUp} />}
+      {showLogoutPopUp && <PopUpLogout setShowPopUp={setShowLogoutPopUp} />}
       {showPopUp && <PopUpUpdate setShowPopUp={setShowPopUp} />}
     </div>
   );

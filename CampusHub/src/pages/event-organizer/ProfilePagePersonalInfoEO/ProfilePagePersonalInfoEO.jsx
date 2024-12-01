@@ -5,6 +5,7 @@ import Verify from "../../../assets/Verify.svg";
 import Ellipse from "../../../assets/Ellipse.svg";
 import PopUpUpdate from "../../../components/PopUpUpdate";
 import PopUpDelete from "../../../components/PopUpDelete";
+import PopUpLogout from "../../../components/PopUpLogout";
 import "../ProfilePagePersonalInfoEO/ProfilePagePersonalInfoEO.css"
 
 const ProfilePagePersonalInfoEO = () => {
@@ -20,6 +21,7 @@ const ProfilePagePersonalInfoEO = () => {
   const [showPopUp, setShowPopUp] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showDeletePopUp, setShowDeletePopUp] = useState(false);
+  const [showLogoutPopUp, setShowLogoutPopUp] = useState(false);
   const [showAnimation, setShowAnimation] = useState(false);
 
   useEffect(() => {
@@ -108,13 +110,13 @@ const ProfilePagePersonalInfoEO = () => {
     };
 
     try {
-      // const response = await fetch("https://example.com/api/user/profile/update", {
-      //   method: "POST", 
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(updatedData),
-      // });
+      const response = await fetch("https://example.com/api/user/profile/update", {
+        method: "POST", 
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedData),
+      });
 
       setTimeout(() => {
         setShowPopUp(true);
@@ -139,12 +141,12 @@ const ProfilePagePersonalInfoEO = () => {
   };
 
   return (
-<div className="profile-page h-[1024px] pt-10 mx-5 lg:mx-20">
+<div className="profile-page h-[1024px] pt-10 mx-4 sm:mx-10 md:mx-20 lg:mx-32">
   <div className={`container ${showAnimation ? "animate-slide-up" : ""}`}
       style={{
         transition: "transform 0.8s ease-out",
       }}>
-    <div className="content-box lg:px-28 px-4">
+    <div className="content-box px-4 sm:px-8 md:px-16">
       <div className="header flex flex-col lg:flex-row justify-between lg:py-10 py-6">
         <div className="text-header flex flex-col">
           <span className="page-title font-semibold text-[24px] lg:text-[32px]">Info Personal</span>
@@ -154,7 +156,7 @@ const ProfilePagePersonalInfoEO = () => {
         </div>
         <span className="title font-semibold text-[24px] lg:text-[32px] mt-4 lg:mt-0">Profile Akun</span>
       </div>
-      <div className="content flex flex-col lg:flex-row gap-8">
+      <div className="content flex flex-col sm:flex-row justify-between gap-8">
         <div className="profile flex flex-col lg:flex-row lg:items-start justify-center lg:justify-between lg:w-10/12 py-10">
           <div className="profile-picture w-[120px] lg:w-2/12 mx-auto lg:mx-0 rounded-full">
             <img
@@ -279,6 +281,16 @@ const ProfilePagePersonalInfoEO = () => {
                 Hapus Akun
               </button>
             </li>
+            <li>
+              <button
+                className={`font-regular text-lg ${activePage === "delete-account" ? "font-semibold underline" : ""} hover:underline`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setShowLogoutPopUp(true);
+                }}>
+                Log Out
+              </button>
+            </li>
           </ul>
         </div>
       </div>
@@ -292,6 +304,7 @@ const ProfilePagePersonalInfoEO = () => {
       />
     </div>
     {showDeletePopUp && <PopUpDelete setShowPopUp={setShowDeletePopUp} />}
+    {showLogoutPopUp && <PopUpLogout setShowPopUp={setShowLogoutPopUp} />}
     {showPopUp && <PopUpUpdate setShowPopUp={setShowPopUp} />}
   </div>
   );

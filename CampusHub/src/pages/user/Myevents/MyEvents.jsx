@@ -25,28 +25,48 @@ const MyEvents = () => {
  const fetchEvents = async () => {
   try {
     setIsLoading(true);
-    const response = await fetch("https://campushub.web.id/api/events/all");
-    if (!response.ok) {
-      throw new Error("Failed to fetch events.");
-    }
 
-    const apiData = await response.json();
+    const dummyData = [
+      {
+        id: 1,
+        title: "Event 1",
+        date: "2024-12-01",
+        image: "https://via.placeholder.com/150",
+        status: "Registered",
+      },
+      {
+        id: 2,
+        title: "Event 2",
+        date: "2024-12-10",
+        image: "https://via.placeholder.com/150",
+        status: "Canceled",
+      },
+      {
+        id: 3,
+        title: "Event 3",
+        date: "2024-12-05",
+        image: "https://via.placeholder.com/150",
+        status: "Registered",
+      },
+      {
+        id: 4,
+        title: "Event 4",
+        date: "2024-12-15",
+        image: "https://via.placeholder.com/150",
+        status: "Canceled",
+      },
+    ];
 
-    const transformedData = apiData.map((event) => ({
-      id: event.id,
-      title: event.judul,
-      date: event.join_date,
-      image: event.foto_event || "https://via.placeholder.com/150", 
-      status: event.available_slot > 0 ? "Registered" : "Canceled", 
-    }));
-
-    setEvents(transformedData);
+    setTimeout(() => {
+      setEvents(dummyData);
+      setIsLoading(false);
+    }, 1000);
   } catch (error) {
     console.error("Error fetching events:", error);
-  } finally {
     setIsLoading(false);
   }
 };
+
 
 
   const toggleDropdown = () => {
@@ -153,7 +173,7 @@ const MyEvents = () => {
             </ul>
           </div>
 
-          <div className="event-list flex flex-col gap-6 px-4 sm:px-6 lg:px-20 py-2">
+          <div className="event-list flex flex-col gap-6 px-4 sm:px-6 lgf:px-20 py-2">
             {isLoading
               ? Array(5)
                   .fill()
